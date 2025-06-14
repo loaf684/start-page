@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start Page</title>
-    <!-- Tabler Icons - for the link and weather icons -->
+    <!-- Icon Libraries -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <!-- ** UPDATED **: Using the dedicated Weather Icons library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
     
     <style>
         /* --- FONT & COLOR PALETTE (Inspired by Catppuccin) --- */
@@ -83,9 +85,11 @@
             font-size: 1.25rem;
             color: var(--sub-text);
         }
-
-        #weather .icon {
+        
+        /* ** UPDATED **: Styling for the new weather icon */
+        #weather-icon {
             font-size: 1.75rem;
+            line-height: 1;
         }
 
         /* --- SEARCH BAR --- */
@@ -148,7 +152,7 @@
             transition: color 0.3s ease, background-color 0.3s ease;
         }
 
-        .link-item i {
+        .link-item i.ti { /* Target only tabler icons for links */
             font-size: 1.1rem;
             width: 20px;
             text-align: center;
@@ -166,7 +170,6 @@
         .link-item.color-yellow i { color: var(--color-yellow); }
         .link-item.color-pink i { color: var(--color-pink); }
         .link-item.color-peach i { color: var(--color-peach); }
-
     </style>
 </head>
 <body>
@@ -178,7 +181,8 @@
 
         <!-- Weather -->
         <div id="weather">
-            <i class="icon ti ti-question-mark"></i>
+            <!-- ** UPDATED **: HTML structure for the new icon -->
+            <i id="weather-icon" class="wi wi-na"></i>
             <span id="weather-text">Loading weather...</span>
         </div>
 
@@ -188,99 +192,45 @@
             <input type="text" id="search-input" name="q" placeholder="Search the web..." autocomplete="off">
         </form>
 
-        <!-- Links Grid -->
+        <!-- Links Grid (No changes here) -->
         <div class="links-grid">
             <!-- Column 1 -->
-            <a href="https://mail.google.com" class="link-item color-blue">
-                <i class="ti ti-mail"></i>
-                <span>gmail</span>
-            </a>
-            <a href="https://twitter.com" class="link-item color-blue">
-                <i class="ti ti-brand-x"></i>
-                <span>twitter</span>
-            </a>
-            <a href="https://open.spotify.com" class="link-item color-green">
-                <i class="ti ti-brand-spotify"></i>
-                <span>spotify</span>
-            </a>
-            <a href="https://discord.com/app" class="link-item color-mauve">
-                <i class="ti ti-brand-discord"></i>
-                <span>discord</span>
-            </a>
-            
+            <a href="https://mail.google.com" class="link-item color-blue"><i class="ti ti-mail"></i><span>gmail</span></a>
+            <a href="https://twitter.com" class="link-item color-blue"><i class="ti ti-brand-x"></i><span>twitter</span></a>
+            <a href="https://open.spotify.com" class="link-item color-green"><i class="ti ti-brand-spotify"></i><span>spotify</span></a>
+            <a href="https://discord.com/app" class="link-item color-mauve"><i class="ti ti-brand-discord"></i><span>discord</span></a>
             <!-- Column 2 -->
-            <a href="https://chat.openai.com" class="link-item color-teal">
-                <i class="ti ti-box"></i>
-                <span>gpt</span>
-            </a>
-            <a href="https://github.com" class="link-item color-mauve">
-                <i class="ti ti-brand-github"></i>
-                <span>github</span>
-            </a>
-            <a href="https://v0.dev" class="link-item color-peach">
-                <i class="ti ti-code"></i>
-                <span>v0.dev</span>
-            </a>
-            <a href="https://news.ycombinator.com" class="link-item color-peach">
-                <i class="ti ti-terminal-2"></i>
-                <span>hacker.news</span>
-            </a>
-            
+            <a href="https://chat.openai.com" class="link-item color-teal"><i class="ti ti-box"></i><span>gpt</span></a>
+            <a href="https://github.com" class="link-item color-mauve"><i class="ti ti-brand-github"></i><span>github</span></a>
+            <a href="https://v0.dev" class="link-item color-peach"><i class="ti ti-code"></i><span>v0.dev</span></a>
+            <a href="https://news.ycombinator.com" class="link-item color-peach"><i class="ti ti-terminal-2"></i><span>hacker.news</span></a>
             <!-- Column 3 -->
-            <a href="https://www.tradingview.com" class="link-item color-blue">
-                <i class="ti ti-chart-line"></i>
-                <span>trading.view</span>
-            </a>
-            <a href="https://www.ssga.com/us/en/intermediary/etfs/fund-finder" class="link-item color-yellow">
-                <i class="ti ti-chart-pie"></i>
-                <span>sector.spdrs</span>
-            </a>
-            <a href="https://www.earningswhispers.com/" class="link-item color-green">
-                <i class="ti ti-chart-area-line"></i>
-                <span>earnings</span>
-            </a>
-            <a href="https://www.reddit.com/r/wallstreetbets/" class="link-item color-yellow">
-                <i class="ti ti-users"></i>
-                <span>wallstreet.bets</span>
-            </a>
-
+            <a href="https://www.tradingview.com" class="link-item color-blue"><i class="ti ti-chart-line"></i><span>trading.view</span></a>
+            <a href="https://www.ssga.com/us/en/intermediary/etfs/fund-finder" class="link-item color-yellow"><i class="ti ti-chart-pie"></i><span>sector.spdrs</span></a>
+            <a href="https://www.earningswhispers.com/" class="link-item color-green"><i class="ti ti-chart-area-line"></i><span>earnings</span></a>
+            <a href="https://www.reddit.com/r/wallstreetbets/" class="link-item color-yellow"><i class="ti ti-users"></i><span>wallstreet.bets</span></a>
             <!-- Column 4 -->
-            <a href="https://start.duckduckgo.com" class="link-item color-pink">
-                <i class="ti ti-layout-dashboard"></i>
-                <span>start.page</span>
-            </a>
-            <a href="https://www.reddit.com/r/desktops/" class="link-item color-pink">
-                <i class="ti ti-device-desktop"></i>
-                <span>desktops</span>
-            </a>
-            <a href="https://monkeytype.com/" class="link-item color-yellow">
-                <i class="ti ti-keyboard"></i>
-                <span>monkeytype</span>
-            </a>
-            <a href="https://musicforprogramming.net/" class="link-item color-pink">
-                <i class="ti ti-music"></i>
-                <span>music.for.prog</span>
-            </a>
+            <a href="https://start.duckduckgo.com" class="link-item color-pink"><i class="ti ti-layout-dashboard"></i><span>start.page</span></a>
+            <a href="https://www.reddit.com/r/desktops/" class="link-item color-pink"><i class="ti ti-device-desktop"></i><span>desktops</span></a>
+            <a href="https://monkeytype.com/" class="link-item color-yellow"><i class="ti ti-keyboard"></i><span>monkeytype</span></a>
+            <a href="https://musicforprogramming.net/" class="link-item color-pink"><i class="ti ti-music"></i><span>music.for.prog</span></a>
         </div>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- ⚙️ CONFIGURATION ---
-            // 1. Get a free API key from https://openweathermap.org/
-            // 2. Find your coordinates at https://www.latlong.net/
             const config = {
                 OPENWEATHER_API_KEY: '5281bd82fb3e9d7592c03a6c682de959', // <-- IMPORTANT: REPLACE THIS
-                LATITUDE: 40.7128,  // <-- REPLACE with your latitude (e.g., New York)
-                LONGITUDE: -74.0060, // <-- REPLACE with your longitude (e.g., New York)
-                SEARCH_ENGINE_URL: 'https://duckduckgo.com/', // Or 'https://www.google.com/search'
+                LATITUDE: 40.7128,  // <-- REPLACE with your latitude
+                LONGITUDE: -74.0060, // <-- REPLACE with your longitude
                 UNITS: 'metric' // 'metric' for Celsius, 'imperial' for Fahrenheit
             };
 
             // --- ELEMENTS ---
             const clockElement = document.getElementById('clock');
             const dateElement = document.getElementById('date');
-            const weatherElement = document.getElementById('weather');
+            const weatherIconElement = document.getElementById('weather-icon');
             const weatherTextElement = document.getElementById('weather-text');
             const searchForm = document.getElementById('search-form');
             const searchInput = document.getElementById('search-input');
@@ -288,45 +238,36 @@
             // --- CLOCK & DATE ---
             function updateTime() {
                 const now = new Date();
-
-                // Format time: HH:MM:SS AM/PM
                 const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-                const timeString = now.toLocaleTimeString('en-US', timeOptions).replace(/(\d{2}:\d{2}:\d{2})/, '<strong>$1</strong>');
-                clockElement.innerHTML = timeString;
-
-                // Format date: Day, Month DD, YYYY
+                clockElement.textContent = now.toLocaleTimeString('en-US', timeOptions);
                 const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                const dateString = now.toLocaleDateString('en-US', dateOptions);
-                dateElement.textContent = dateString;
+                dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
             }
 
             // --- WEATHER ---
+            // ** UPDATED **: New mapping for the "Weather Icons" library
             const weatherIconMap = {
-                '01d': 'ti-sun', '01n': 'ti-moon',
-                '02d': 'ti-cloud-sun', '02n': 'ti-cloud-moon',
-                '03d': 'ti-cloud', '03n': 'ti-cloud',
-                '04d': 'ti-clouds', '04n': 'ti-clouds',
-                '09d': 'ti-cloud-drizzle', '09n': 'ti-cloud-drizzle',
-                '10d': 'ti-cloud-rain', '10n': 'ti-cloud-rain',
-                '11d': 'ti-cloud-storm', '11n': 'ti-cloud-storm',
-                '13d': 'ti-cloud-snow', '13n': 'ti-cloud-snow',
-                '50d': 'ti-mist', '50n': 'ti-mist',
+                '01d': 'wi-day-sunny', '01n': 'wi-night-clear',
+                '02d': 'wi-day-cloudy', '02n': 'wi-night-alt-cloudy',
+                '03d': 'wi-cloud', '03n': 'wi-cloud',
+                '04d': 'wi-cloudy', '04n': 'wi-cloudy',
+                '09d': 'wi-showers', '09n': 'wi-showers',
+                '10d': 'wi-day-rain', '10n': 'wi-night-alt-rain',
+                '11d': 'wi-thunderstorm', '11n': 'wi-thunderstorm',
+                '13d': 'wi-snow', '13n': 'wi-snow',
+                '50d': 'wi-fog', '50n': 'wi-fog',
             };
 
             async function fetchWeather() {
                 if (config.OPENWEATHER_API_KEY === 'YOUR_OPENWEATHER_API_KEY') {
                     weatherTextElement.textContent = 'Add API Key';
-                    weatherElement.querySelector('.icon').className = 'icon ti ti-alert-circle';
+                    weatherIconElement.className = 'wi wi-alert-triangle'; // Updated icon
                     return;
                 }
-
                 const url = `https://api.openweathermap.org/data/2.5/weather?lat=${config.LATITUDE}&lon=${config.LONGITUDE}&appid=${config.OPENWEATHER_API_KEY}&units=${config.UNITS}`;
-
                 try {
                     const response = await fetch(url);
-                    if (!response.ok) {
-                        throw new Error(`Weather API Error: ${response.statusText}`);
-                    }
+                    if (!response.ok) throw new Error(`Weather API Error: ${response.statusText}`);
                     const data = await response.json();
                     
                     const temp = Math.round(data.main.temp);
@@ -334,34 +275,27 @@
                     const iconCode = data.weather[0].icon;
                     const tempUnit = config.UNITS === 'metric' ? '°C' : '°F';
                     
-                    const iconClass = weatherIconMap[iconCode] || 'ti-question-mark';
-                    weatherElement.querySelector('.icon').className = `icon ${iconClass}`;
+                    const iconClass = weatherIconMap[iconCode] || 'wi-na';
+                    weatherIconElement.className = `wi ${iconClass}`;
                     weatherTextElement.textContent = `${temp}${tempUnit} ${description}`;
-
                 } catch (error) {
                     console.error('Failed to fetch weather:', error);
                     weatherTextElement.textContent = 'Weather unavailable';
-                    weatherElement.querySelector('.icon').className = 'icon ti ti-error-404';
+                    weatherIconElement.className = 'wi wi-alien'; // Updated icon
                 }
             }
             
             // --- SEARCH ---
             function setupSearch() {
-                searchForm.action = config.SEARCH_ENGINE_URL;
-                // Focus input on page load
                 searchInput.focus();
-                // Clear search on page load
                 searchInput.value = '';
             }
 
             // --- INITIALIZATION ---
             updateTime();
             setInterval(updateTime, 1000);
-            
             fetchWeather();
-            // Refresh weather every 30 minutes
             setInterval(fetchWeather, 30 * 60 * 1000); 
-
             setupSearch();
         });
     </script>
