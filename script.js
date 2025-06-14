@@ -18,6 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
 
     // -----------------
+    // Random Anime Background
+    // -----------------
+    function setRandomAnimeBackground() {
+        const backgrounds = [
+            'https://i.imgur.com/vH32p5A.jpg', // City at Night
+            'https://i.imgur.com/sS4a5sA.jpg', // Girl on Train
+            'https://i.imgur.com/1O8y01T.png', // Lofi Room
+            'https://i.imgur.com/aQx4L9I.jpg', // Spirited Away Train
+            'https://i.imgur.com/kR1w2i9.jpg', // Your Name Comet
+            'https://i.imgur.com/k91Jv2J.jpg', // City Street
+            'https://i.imgur.com/sT4IqVq.jpg', // Ramen Shop
+            'https://i.imgur.com/mU4P2eL.jpg'  // Night Sky
+        ];
+        const randomIndex = Math.floor(Math.random() * backgrounds.length);
+        const randomBgUrl = backgrounds[randomIndex];
+        document.body.style.backgroundImage = `url('${randomBgUrl}')`;
+    }
+
+    // -----------------
     // Clock and Date
     // -----------------
     function updateTime() {
@@ -68,19 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Weather Error: Missing Tomorrow.io API Key in script.js");
             return;
         }
-
         const url = `https://api.tomorrow.io/v4/weather/forecast?location=${lat},${lon}×teps=current&units=metric&apikey=${TOMORROW_API_KEY}`;
-        
         try {
             const response = await fetch(url);
             if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
             const data = await response.json();
-            
             const values = data.timelines.minutely[0].values;
             const temp = Math.round(values.temperature);
             const weatherCode = values.weatherCode;
             const weatherInfo = weatherCodeMap[weatherCode] || weatherCodeMap[0];
-
             weatherElement.innerHTML = `
                 <span>${temp}°C</span>
                 <span>${weatherInfo.description}</span>
@@ -109,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // -----------------
     // Initializations
     // -----------------
+    setRandomAnimeBackground();
     updateTime();
     setInterval(updateTime, 1000);
     getWeather();
