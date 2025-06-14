@@ -270,7 +270,7 @@
             // 1. Get a free API key from https://openweathermap.org/
             // 2. Find your coordinates at https://www.latlong.net/
             const config = {
-                OPENWEATHER_API_KEY: 'tS7KRcKokpW3IT9dXzAJAyEAZwDxScdX', // <-- IMPORTANT: REPLACE THIS
+                OPENWEATHER_API_KEY: '5281bd82fb3e9d7592c03a6c682de959', // <-- IMPORTANT: REPLACE THIS
                 LATITUDE: 40.7128,  // <-- REPLACE with your latitude (e.g., New York)
                 LONGITUDE: -74.0060, // <-- REPLACE with your longitude (e.g., New York)
                 SEARCH_ENGINE_URL: 'https://duckduckgo.com/', // Or 'https://www.google.com/search'
@@ -314,7 +314,7 @@
             };
 
             async function fetchWeather() {
-                if (config.OPENWEATHER_API_KEY === 'YOUR_OPENWEATHER_API_KEY') {
+                if (config.OPENWEATHER_API_KEY === '5281bd82fb3e9d7592c03a6c682de959') {
                     weatherTextElement.textContent = 'Add API Key';
                     weatherElement.querySelector('.icon').className = 'icon ti ti-alert-circle';
                     return;
