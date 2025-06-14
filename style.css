@@ -21,8 +21,8 @@
 }
 
 body {
-    background-color: var(--bg-color);
-    background-image: url('background.svg');
+    /* Background image is now set by JavaScript */
+    background-color: var(--bg-color); /* Fallback color */
     background-size: cover;
     background-position: center center;
     color: var(--fg-color);
@@ -33,6 +33,7 @@ body {
     align-items: center;
     text-align: center;
     overflow: hidden;
+    transition: background-image 0.5s ease-in-out;
 }
 
 .center-content {
@@ -48,12 +49,13 @@ body {
     font-size: 5rem;
     font-weight: 700;
     color: var(--text-light);
-    text-shadow: 0 0 15px rgba(0,0,0,0.3);
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 #date {
     font-size: 1.25rem;
     color: var(--fg-color);
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 #weather {
@@ -64,6 +66,7 @@ body {
     color: var(--fg-color);
     margin-bottom: 1rem;
     min-height: 38px; /* Prevent layout shift while loading */
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 #weather i {
@@ -99,6 +102,7 @@ body {
     backdrop-filter: blur(5px);
     transition: background-color 0.2s;
 }
+
 #search-input:focus {
     background-color: rgba(0,0,0,0.5);
 }
@@ -153,8 +157,36 @@ body {
 .link-column:nth-child(2) a i { color: var(--accent-green); }
 .link-column:nth-child(3) a i { color: var(--accent-yellow); }
 
-/* Column 4 has mixed colors for accuracy */
 .link-column:nth-child(4) a:nth-child(1) i { color: var(--accent-pink); }
 .link-column:nth-child(4) a:nth-child(2) i { color: var(--fg-color); }
 .link-column:nth-child(4) a:nth-child(3) i { color: var(--accent-yellow); }
 .link-column:nth-child(4) a:nth-child(4) i { color: var(--fg-color); }
+
+/* --- Responsive Fixes for Container --- */
+@media (max-width: 920px) {
+    #links-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #clock {
+        font-size: 3.5rem;
+    }
+    #date, #weather {
+        font-size: 1rem;
+    }
+    .center-content {
+        gap: 0.5rem;
+    }
+    #links-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1rem;
+        gap: 1rem;
+    }
+    .link-column {
+        gap: 0.8rem;
+    }
+}
