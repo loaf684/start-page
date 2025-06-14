@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- CONFIGURATION ---
     // -----------------
     // IMPORTANT: Get your own free API key from https://www.tomorrow.io/
-    const TOMORROW_API_KEY = 'YOUR_TOMORROW_IO_API_KEY'; // <--- PASTE YOUR API KEY HERE
+    const TOMORROW_API_KEY = 'tS7KRcKokpW3IT9dXzAJAyEAZwDxScdX'; // <--- PASTE YOUR API KEY HERE
 
     // Search provider URL. {query} will be replaced with the search term.
     const SEARCH_PROVIDER = 'https://duckduckgo.com/?q={query}';
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     async function fetchWeather(lat, lon) {
-        if (TOMORROW_API_KEY === 'YOUR_TOMORROW_IO_API_KEY' || !TOMORROW_API_KEY) {
+        if (TOMORROW_API_KEY === 'tS7KRcKokpW3IT9dXzAJAyEAZwDxScdX' || !TOMORROW_API_KEY) {
             weatherElement.innerHTML = `<span>Add API key for weather</span>`;
             console.error("Weather Error: Missing Tomorrow.io API Key in script.js");
             return;
