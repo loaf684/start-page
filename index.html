@@ -43,12 +43,9 @@
             align-items: center;
             min-height: 100vh;
             padding: 2rem;
-            /* Updated background to match the new image */
-            background-color: #1e1c31;
-            background-image:
-                linear-gradient(rgba(137, 220, 235, 0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(137, 220, 235, 0.07) 1px, transparent 1px);
-            background-size: 40px 40px;
+            /* --- UPDATED BACKGROUND --- */
+            background: url('https://w.wallhaven.cc/full/ml/wallhaven-mlpprm.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         main {
@@ -90,7 +87,6 @@
             font-size: 1.25rem;
         }
         
-        /* --- UPDATED SEARCH BAR STYLES --- */
         .search-container {
             width: 100%;
             max-width: 550px;
@@ -113,8 +109,9 @@
         .search-container input {
             font-family: var(--font-sans);
             width: 100%;
-            background-color: var(--container-bg);
-            border: 1px solid var(--border-color);
+            /* --- UPDATED FOR WHITE GLASS EFFECT --- */
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 999px; /* Pill shape */
             color: var(--text-color);
             font-size: 1rem;
@@ -144,19 +141,19 @@
             font-family: var(--font-sans);
             padding: 5px;
         }
-        /* --- END OF UPDATED SEARCH BAR STYLES --- */
 
-
+        /* --- UPDATED LINKS CONTAINER FOR WHITE GLASS EFFECT --- */
         #links-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px 40px;
             width: 100%;
             max-width: 800px;
-            background-color: rgba(30, 28, 46, 0.75); /* Kept original style for contrast */
+            background-color: rgba(255, 255, 255, 0.1); /* White glass */
             padding: 25px 35px;
             border-radius: 12px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px); /* Increased blur for better effect */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for definition */
         }
         
         .link-column {
