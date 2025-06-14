@@ -4,333 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start Page</title>
-    <!-- Using a Google Font that matches the style -->
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-color: #1a1826;
-            --container-bg: #2a273f;
-            --text-color: #cad3f5;
-            --subtext-color: #a5adce;
-            --placeholder-color: #908caa;
-            --border-color: #89dceb;
-            --focus-border-color: #cba6f7;
-            --col1-color: #91d7e3; /* Teal */
-            --col2-color: #a6da95; /* Green */
-            --col3-color: #eed49f; /* Yellow */
-            --col4-color: #f5bde6; /* Pink */
-            --weather-color: #cba6f7; /* Mauve */
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --font-mono: 'Roboto Mono', 'SF Mono', 'Fira Code', monospace;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-            /* --- UPDATED BACKGROUND --- */
-            background: url('https://w.wallhaven.cc/full/ml/wallhaven-mlpprm.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .time-container {
-            text-align: center;
-        }
-
-        #clock {
-            font-family: var(--font-mono);
-            font-size: clamp(3rem, 12vw, 5.5rem);
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        #date {
-            font-size: 1.1rem;
-            color: var(--subtext-color);
-        }
-        
-        #weather {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.1rem;
-            color: var(--subtext-color);
-            margin-bottom: 1rem; /* Added margin for spacing */
-        }
-
-        #weather i {
-            color: var(--weather-color);
-            font-size: 1.25rem;
-        }
-        
-        .search-container {
-            width: 100%;
-            max-width: 550px;
-        }
-
-        .search-container form {
-            position: relative;
-        }
-        
-        .search-container .fa-search {
-            position: absolute;
-            top: 50%;
-            left: 22px;
-            transform: translateY(-50%);
-            color: var(--placeholder-color);
-            pointer-events: none;
-            font-size: 0.9rem;
-        }
-        
-        .search-container input {
-            font-family: var(--font-sans);
-            width: 100%;
-            /* --- UPDATED FOR WHITE GLASS EFFECT --- */
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 999px; /* Pill shape */
-            color: var(--text-color);
-            font-size: 1rem;
-            padding: 14px 100px 14px 50px; /* Padding for icon and button */
-            outline: none;
-            transition: border-color 0.2s ease-in-out;
-        }
-
-        .search-container input::placeholder {
-            color: var(--placeholder-color);
-        }
-        
-        .search-container input:focus {
-            border-color: var(--focus-border-color);
-        }
-
-        .search-container button {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--placeholder-color);
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: var(--font-sans);
-            padding: 5px;
-        }
-
-        /* --- UPDATED LINKS CONTAINER FOR WHITE GLASS EFFECT --- */
-        #links-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px 40px;
-            width: 100%;
-            max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.1); /* White glass */
-            padding: 25px 35px;
-            border-radius: 12px;
-            backdrop-filter: blur(8px); /* Increased blur for better effect */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for definition */
-        }
-        
-        .link-column {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-item {
-            color: var(--text-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: color 0.2s ease-in-out;
-            font-size: 0.95rem;
-        }
-
-        .link-item i {
-            width: 20px;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .link-column:nth-child(1) .link-item i { color: var(--col1-color); }
-        .link-column:nth-child(2) .link-item i { color: var(--col2-color); }
-        .link-column:nth-child(3) .link-item i { color: var(--col3-color); }
-        .link-column:nth-child(4) .link-item i { color: var(--col4-color); }
-
-        .link-item:hover {
-            color: white;
-            font-weight: 500;
-        }
-        
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for a clean look -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-
 <body>
-    <main>
-        <div class="time-container">
-            <div id="clock"></div>
-            <div id="date"></div>
-        </div>
-
-        <div id="weather">
-            <!-- Weather data will be injected here -->
-            <i class="fas fa-spinner fa-spin"></i>
-            <span>Loading weather...</span>
-        </div>
-
-        <div class="search-container">
-            <form id="search-form" action="https://duckduckgo.com/" method="get" target="_blank">
-                <!-- Icon is here -->
-                <i class="fas fa-search"></i>
-                <input type="text" name="q" placeholder="Search the web..." autocomplete="off">
-                <button type="submit">Search</button>
+    <main class="container">
+        <div class="center-content">
+            <div id="clock">04:31:16 PM</div>
+            <div id="date">Monday, March 24, 2025</div>
+            <div id="weather">
+                <!-- Weather data will be injected here by JS -->
+            </div>
+            <form id="search-form" action="https://duckduckgo.com/" method="get">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" id="search-input" name="q" placeholder="Search the web..." autocomplete="off">
             </form>
-        </div>
-
-        <div id="links-container">
-            <div class="link-column">
-                <a href="https://mail.google.com" target="_blank" class="link-item"><i class="fas fa-envelope"></i>gmail</a>
-                <a href="https://twitter.com" target="_blank" class="link-item"><i class="fab fa-x-twitter"></i>twitter</a>
-                <a href="https://open.spotify.com" target="_blank" class="link-item"><i class="fab fa-spotify"></i>spotify</a>
-                <a href="https://discord.com/app" target="_blank" class="link-item"><i class="fab fa-discord"></i>discord</a>
-            </div>
-            <div class="link-column">
-                <a href="https://chat.openai.com" target="_blank" class="link-item"><i class="fas fa-robot"></i>gpt</a>
-                <a href="https://github.com" target="_blank" class="link-item"><i class="fab fa-github"></i>github</a>
-                <a href="https://v0.dev" target="_blank" class="link-item"><i class="fas fa-code"></i>v0.dev</a>
-                <a href="https://news.ycombinator.com" target="_blank" class="link-item"><i class="fab fa-hacker-news"></i>hacker.news</a>
-            </div>
-            <div class="link-column">
-                <a href="https://www.tradingview.com" target="_blank" class="link-item"><i class="fas fa-chart-line"></i>trading.view</a>
-                <a href="https://www.sectorspdr.com/" target="_blank" class="link-item"><i class="fas fa-chart-pie"></i>sector.spdrs</a>
-                <a href="https://www.nasdaq.com/market-activity/earnings" target="_blank" class="link-item"><i class="fas fa-dollar-sign"></i>earnings</a>
-                <a href="https://www.reddit.com/r/wallstreetbets/" target="_blank" class="link-item"><i class="fas fa-gem"></i>wallstreet.bets</a>
-            </div>
-            <div class="link-column">
-                <a href="https://www.startpage.com/" target="_blank" class="link-item"><i class="fas fa-user-secret"></i>start.page</a>
-                <a href="https://www.reddit.com/r/desktops" target="_blank" class="link-item"><i class="fas fa-desktop"></i>desktops</a>
-                <a href="https://monkeytype.com/" target="_blank" class="link-item"><i class="fas fa-keyboard"></i>monkeytype</a>
-                <a href="https://musicforprogramming.net/" target="_blank" class="link-item"><i class="fas fa-music"></i>music.for.prog</a>
+            <div id="links-container">
+                <!-- Column 1 -->
+                <div class="link-column">
+                    <a href="https://mail.google.com" target="_blank"><i class="ph-fill ph-envelope-simple"></i> gmail</a>
+                    <a href="https://twitter.com" target="_blank"><i class="ph-fill ph-twitter-logo"></i> twitter</a>
+                    <a href="https://open.spotify.com" target="_blank"><i class="ph-fill ph-spotify-logo"></i> spotify</a>
+                    <a href="https://discord.com/app" target="_blank"><i class="ph-fill ph-discord-logo"></i> discord</a>
+                </div>
+                <!-- Column 2 -->
+                <div class="link-column">
+                    <a href="https://chat.openai.com/" target="_blank"><i class="ph-fill ph-package"></i> gpt</a>
+                    <a href="https://github.com" target="_blank"><i class="ph-fill ph-github-logo"></i> github</a>
+                    <a href="https://v0.dev" target="_blank"><i class="ph-fill ph-code"></i> v0.dev</a>
+                    <a href="https://news.ycombinator.com/" target="_blank"><i class="ph-fill ph-terminal-window"></i> hacker.news</a>
+                </div>
+                <!-- Column 3 -->
+                <div class="link-column">
+                    <a href="https://www.tradingview.com/" target="_blank"><i class="ph-fill ph-chart-line-up"></i> trading.view</a>
+                    <a href="https://www.sectorspdr.com/" target="_blank"><i class="ph-fill ph-chart-pie-slice"></i> sector.spdrs</a>
+                    <a href="https://www.earningswhispers.com/" target="_blank"><i class="ph-fill ph-trend-up"></i> earnings</a>
+                    <a href="https://www.reddit.com/r/wallstreetbets/" target="_blank"><i class="ph-fill ph-diamond"></i> wallstreet.bets</a>
+                </div>
+                <!-- Column 4 -->
+                <div class="link-column">
+                    <a href="#"><i class="ph-fill ph-house"></i> start.page</a>
+                    <a href="https://www.reddit.com/r/desktops/" target="_blank"><i class="ph-fill ph-desktop"></i> desktops</a>
+                    <a href="https://monkeytype.com/" target="_blank"><i class="ph-fill ph-keyboard"></i> monkeytype</a>
+                    <a href="https://musicforprogramming.net/" target="_blank"><i class="ph-fill ph-music-notes-simple"></i> music.for.prog</a>
+                </div>
             </div>
         </div>
     </main>
-
-    <script>
-        // --- CLOCK AND DATE ---
-        function updateTime() {
-            const clockEl = document.getElementById('clock');
-            const dateEl = document.getElementById('date');
-            const now = new Date();
-
-            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-            const timeString = now.toLocaleTimeString('en-US', timeOptions);
-            
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = now.toLocaleDateString('en-US', dateOptions);
-
-            clockEl.textContent = timeString;
-            dateEl.textContent = dateString;
-        }
-
-        // --- WEATHER ---
-        async function getWeather() {
-            // --- CONFIGURATION ---
-            // 1. Get a FREE API key from https://app.tomorrow.io/signup
-            // 2. Replace 'YOUR_TOMORROW_IO_API_KEY' with your actual key.
-            const apiKey = 'tS7KRcKokpW3IT9dXzAJAyEAZwDxScdX';
-
-            // Location for Depok, Indonesia
-            const location = '-6.397,106.824';
-            const weatherEl = document.getElementById('weather');
-
-            if (apiKey === 'tS7KRcKokpW3IT9dXzAJAyEAZwDxScdX') {
-                weatherEl.innerHTML = `<i class="fas fa-exclamation-circle"></i> <span>Add API key for weather</span>`;
-                return;
-            }
-
-            const url = `https://api.tomorrow.io/v4/weather/realtime?location=${location}&units=metric&apikey=${apiKey}`;
-            
-            const weatherCodeMap = {
-                0: { text: "Unknown", icon: "fa-question-circle" },
-                1000: { text: "Clear", icon: "fa-sun" },
-                1100: { text: "Mostly Clear", icon: "fa-sun" },
-                1101: { text: "Partly Cloudy", icon: "fa-cloud-sun" },
-                1102: { text: "Mostly Cloudy", icon: "fa-cloud" },
-                1001: { text: "Cloudy", icon: "fa-cloud" },
-                2000: { text: "Fog", icon: "fa-smog" },
-                2100: { text: "Light Fog", icon: "fa-smog" },
-                4000: { text: "Drizzle", icon: "fa-cloud-rain" },
-                4001: { text: "Rain", icon: "fa-cloud-showers-heavy" },
-                4200: { text: "Light Rain", icon: "fa-cloud-rain" },
-                4201: { text: "Heavy Rain", icon: "fa-cloud-showers-heavy" },
-                5000: { text: "Snow", icon: "fa-snowflake" },
-                5001: { text: "Flurries", icon: "fa-snowflake" },
-                5100: { text: "Light Snow", icon: "fa-snowflake" },
-                5101: { text: "Heavy Snow", icon: "fa-snowflake" },
-                6000: { text: "Freezing Drizzle", icon: "fa-icicles" },
-                6001: { text: "Freezing Rain", icon: "fa-icicles" },
-                6200: { text: "Light Freezing Rain", icon: "fa-icicles" },
-                6201: { text: "Heavy Freezing Rain", icon: "fa-icicles" },
-                7000: { text: "Ice Pellets", icon: "fa-igloo" },
-                7101: { text: "Heavy Ice Pellets", icon: "fa-igloo" },
-                7102: { text: "Light Ice Pellets", icon: "fa-igloo" },
-                8000: { text: "Thunderstorm", icon: "fa-bolt" },
-            };
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                const values = data.data.values;
-                const temp = Math.round(values.temperature);
-                const weatherCode = values.weatherCode;
-                const weatherInfo = weatherCodeMap[weatherCode] || weatherCodeMap[0];
-
-                weatherEl.innerHTML = `
-                    <span>${temp}°C</span>
-                    <i class="fas ${weatherInfo.icon}"></i>
-                    <span>${weatherInfo.text}</span>
-                `;
-            } catch (error) {
-                console.error("Could not fetch weather:", error);
-                weatherEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i> <span>Weather unavailable</span>`;
-            }
-        }
-
-        // --- INITIALIZATION ---
-        document.addEventListener('DOMContentLoaded', () => {
-            updateTime();
-            setInterval(updateTime, 1000);
-            getWeather();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
