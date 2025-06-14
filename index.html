@@ -237,7 +237,7 @@
             // --- CLOCK & DATE ---
             function updateTime() {
                 const now = new Date();
-                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
                 clockElement.textContent = now.toLocaleTimeString('en-US', timeOptions);
                 const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
